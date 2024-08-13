@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<title>{% block title %} Detail View {% endblock title %}</title>
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 100%; max-width: 1000px; margin: 50px auto;">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h2 class="card-title">{{ article.title }}</h2>
+                    <p class="card-text">{{ article.summary }}</p>
+                    <p class="card-text">{{ article.body | safe}}</p>
+                    <p class="card-text">
+                        <small class="text-muted">Author: {{ article.author | title }} • {{ article.date }}</small>
+                    </p>
+                    <p>
+                        <a href="{% url 'article_delete' article.pk %}">Delete</a>
+                        <a href="{% url 'article_edit' article.pk %}">Update</a>
+                        <a href="{% url 'article_list' %}">Main Page</a>
+                    </p>
+                </div>
+            </div>
+            {% if article.image %}
+            <div class="col-md-4 d-flex align-items-center" style="margin-top: 20px;">
+                <img src="{{ article.image.url }}" class="img-fluid rounded-end" alt="{{ article.title }}" style="width: 100%;">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for article in object_list %}
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 90%; max-width: 600px; margin: 50px auto;">
+        <div class="card-header text-center">
+            <span class="font-weight-bold">
+                <a href="{% url 'article_detail' article.pk %}"><h2>{{ article.title }}</h2></a>
+            </span>
+        </div>
+        {% if article.image %}
+        <img class="card-img-top" src="{{ article.image.url }}" alt="{{ article.title }}">
+        {% endif %}
+        <div class="card-body text-center">
+            {{ article.summary }}... <a href="{% url 'article_detail' article.pk %}">read more....</a>
+        </div>
+        <div class="card-footer text-left text-muted">
+            <span class="text-muted">Author: {{ article.author | title }} • {{ article.date }}</span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
