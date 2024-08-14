@@ -31,6 +31,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
                             <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'article_create' %}">Create Article</a></li>
                             <li>
                                 <form method="POST" action="{% url 'logout' %}">
                                     {% csrf_token %}

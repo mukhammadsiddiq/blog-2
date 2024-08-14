@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-<title> {% block title %}Edit Article{% endblock title %} </title>
+<title> {% block title %}New Article{% endblock title %} </title>
 
 {% block content %}
 <div class="d-flex justify-content-center">
     <div class="card" style="width: 90%; max-width: 700px; margin: 50px auto;">
         <div class="card-header text-center">
-            <h1>Article Update</h1>
+            <h1>New Article</h1>
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
-                <button class="btn btn-info ml-2" type="submit">Update</button>
+                <button class="btn btn-success ml-2" type="submit">Update</button>
             </form>
         </div>
     </div>
