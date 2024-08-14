@@ -9,6 +9,7 @@
             <h1>Article Update</h1>
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                {{ form.media }}
                 {{ form | crispy }}
                 <button class="btn btn-info ml-2" type="submit">Update</button>
             </form>
