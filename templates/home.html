@@ -1,17 +1,39 @@
+{# Extending the base template, which provides a common structure for your pages #}
 {% extends 'base.html' %}
+
+{# Setting the title block, which can be overridden by other templates #}
 <title>{% block title %} Home {% endblock title %}</title>
+
+{# Starting the content block where the main content of the page will go #}
 {% block content %}
+
+    {# Checking if the user is authenticated (logged in) #}
     {% if user.is_authenticated %}
-    {{ user.username }}
+        {# Display the username of the logged-in user #}
+        {{ user.username }}
+
+        {# Display a welcome message for authenticated users #}
         <h1>Welcome back</h1>
+
+        {# Form for logging out, using POST method and CSRF protection #}
         <form method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
             <button type="submit" class="btn btn-warning">Log Out</button>
+
+            {# Link to the article list page #}
             <a class="btn btn-success" href="{% url 'article_list' %}">Check List</a>
         </form>
     {% else %}
+
+        {# Display message for users who are not logged in #}
         <h1>You were not registered</h1>
+
+        {# Link to the login page #}
         <p><a href="{% url 'login' %}">Login</a></p>
-        <p><a href="{% url 'signup' %}">signup</a></p>
-    {%endif%}
+
+        {# Link to the signup page #}
+        <p><a href="{% url 'signup' %}">Signup</a></p>
+    {% endif %}
+
+{# Ending the content block #}
 {% endblock content %}
